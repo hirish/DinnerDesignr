@@ -101,6 +101,16 @@ def menu():
 		return redirect('/')
 	
 	dinners = user.g.getDinners()[:7]
+	if len(dinners) < 7:
+		toCreate = 7 - len(dinners)
+		n = datetime.datetime.now().replace(hour = 7, minute = 0)
+		for i in range(toCreate):
+			t = n + datetime.timedelta(days = 7 - i)
+			newDinner = Dinner(menu = "Something Delicious", time = t, cookUser = user, g = user.g)
+			s.add(newDinner)
+		s.commit()
+		dinners = user.g.getDinners()[:7]
+
 	if user.owned == user.g:
 		return render_template('menu.html', dinners = dinners, code = user.owned.code, owner = True);
 
