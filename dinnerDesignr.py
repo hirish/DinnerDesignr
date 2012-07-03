@@ -20,6 +20,12 @@ s = S()
 @app.route('/login', methods=['POST','GET'])
 @app.route('/register', methods=['POST','GET'])
 def index():
+	user = isLoggedIn()
+	if user:
+		if not user.group:
+			return redirect(url_for('groups'))
+		return redirect(url_for('menu'))
+
 	registrationError = None
 	loginError = None
 	if request.method == 'POST':
