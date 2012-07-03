@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Table, Boolean
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
-import hashlib
+import hashlib, datetime
 
 Base = declarative_base()
 
@@ -48,6 +48,9 @@ class Group(Base):
 
 	def __repr__(self):
 		return "<Group %i : %s>" % (self.id, str(self.users))
+
+	def getDinners(self):
+		return [d for d in self.dinners if d.time >= datetime.datetime.now()]
 
 
 class Dinner(Base):

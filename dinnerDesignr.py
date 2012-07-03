@@ -100,8 +100,7 @@ def menu():
 	if not user:
 		return redirect('/')
 	
-	dinners = user.g.dinners[:10]
-	print dinners
+	dinners = user.g.getDinners()[:7]
 	if user.owned == user.g:
 		return render_template('menu.html', dinners = dinners, code = user.owned.code, owner = True);
 
