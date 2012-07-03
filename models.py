@@ -50,7 +50,7 @@ class Group(Base):
 		return "<Group %i : %s>" % (self.id, str(self.users))
 
 	def getDinners(self):
-		return [d for d in self.dinners if d.time >= datetime.datetime.now()]
+		return sorted([d for d in self.dinners if d.time >= datetime.datetime.now()], key = lambda d: d.time)
 
 
 class Dinner(Base):
