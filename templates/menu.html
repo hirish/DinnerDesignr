@@ -1,0 +1,51 @@
+<%include file="header.html" />
+
+	<div id="accordion">
+
+		<script>
+		window.addEvent('domready', function(){
+			var accordion = new Fx.Accordion($$('.toggler'), $$('.element'), {
+				opacity:		0,
+				onActive:		function(toggler){toggler.setStyle('color', '#111');},
+				onBackground:	function(toggler){toggler.setStyle('color', '#555');}
+			});
+		});
+		</script>
+
+		% for i, dinner in enumerate(dinners):
+		<h3 class="toggler">
+		  ${dinner.getDay()}
+		</h3>
+		<div class="element">
+		  <a data-milkbox="single" href="update.html?id=${dinner.id}" data-milkbox-size="width:315,height:275" class="inner">
+			<img src="static/faces/${dinner.cookUser.name}.jpg" alt="${dinner.cookUser.name}" class="mainimage" width="100" height="100" />
+				<table class="mealdisplay">
+					<tr>
+						<th>Cooking...</th>
+						<td>${dinner.menu}</td>
+					</tr>
+					<tr>
+						<th>At...</th>
+						<td>${dinner.getFuzzyTime()} pm</td>
+					</tr>
+					<tr>
+						<th>With...</th>
+						<td class="selector">
+						  	% for attendee in dinner.getAttendees():
+							<img src="static/faces/${attendee.name}.jpg" alt="${attendee.name}" width="30" height="30" />
+							% endfor
+						</td>
+					</tr>
+				</table>
+			</a>
+		</div>
+
+		% if not i == len(dinners) - 1:
+		<div class="divider">&nbsp;</div>
+		% endif
+
+		% endfor
+
+	</div>
+
+<%include file="footer.html" />

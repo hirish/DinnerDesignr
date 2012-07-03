@@ -1,0 +1,59 @@
+<%include file="header.html"/>
+
+	<div id="accordion">
+	<script>
+	window.addEvent('domready', function(){
+		var accordion = new Fx.Accordion($$('.toggler'), $$('.element'), {
+			opacity:		0,
+			onActive:		function(toggler){toggler.setStyle('color', '#111');},
+			onBackground:	function(toggler){toggler.setStyle('color', '#555');},
+			% if registrationError:
+			show:			1,
+			% else:
+			show:			0,
+			% endif
+		});
+	});
+	</script>
+
+
+		<h3 class="toggler">
+			Login
+		</h3>
+		<div class="element">
+			<div class="inner" style="padding: 10px 5px;">
+				% if loginError:
+				<label style="display:inline; color:#a30000">Error:</label> <span style="color:#a30000">${loginError} <!-- <a href=#>Retrieve your account?</a> --> </span><br/><br />
+				% endif
+				<form method="post" action="login">
+				  <input name="email" type="text" value="Email" />
+				  <input name="password" type="password" value="Password" style="margin: 0 5px;" />
+				  <input name="login" type="Submit" value="Go" />
+				</form>
+			</div>
+		</div>
+
+		<div class="divider">&nbsp;</div>
+
+		<h3 class="toggler">
+			Register
+			<span class="notification red">FREE</span>
+		</h3>
+		<div class="element">
+			<div class="inner" style="padding: 10px 5px;">
+				<label style="display:inline;">Welcome!</label> Give us your details and we'll give you a <em>free</em> account!<br /><br />
+				% if registrationError:
+				<label style="display:inline; color:#a30000">Error:</label> <span style="color:#a30000">${registrationError} <!-- <a href=#>Retrieve your account?</a> --> </span><br/><br />
+				% endif
+				<form method="post" action="register">
+					<label style="width: 150px;">Your (Real) Name:</label><input name="name" type="text" value="Name" /><br/>
+					<label style="width: 150px;">Your Email (No Spam!):</label><input name="email" type="text" value="Email" /><br/>
+					<label style="width: 150px;">Your Password:</label><input name="password" type="password" value="Password" style="margin-right:10px" />
+					<input name="register" type="Submit" value="Go" />
+				</form>
+			</div>
+		</div>
+		
+	</div>
+
+<%include file="footer.html" />

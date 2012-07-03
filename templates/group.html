@@ -1,0 +1,51 @@
+<%include file="header.html"/>
+
+	<div id="accordion">
+	<script>
+	window.addEvent('domready', function(){
+		var accordion = new Fx.Accordion($$('.toggler'), $$('.element'), {
+			opacity:		0,
+			onActive:		function(toggler){toggler.setStyle('color', '#111');},
+			onBackground:	function(toggler){toggler.setStyle('color', '#555');},
+			% if registrationError:
+			show:			1,
+			% else:
+			show:			0,
+			% endif
+		});
+	});
+	</script>
+
+
+		<h3 class="toggler">
+			Join Group
+		</h3>
+		<div class="element">
+			<div class="inner" style="padding: 10px 5px;">
+				% if codeError:
+				<label style="display:inline; color:#a30000">Error:</label> <span style="color:#a30000">${codeError}</span><br/><br />
+				% endif
+				<form method="get" action="joinGroup">
+				  <input name="code" type="text" value="Code" style="width: 396px" />
+				  <input name="joinGroup" type="Submit" value="Go" />
+				</form>
+			</div>
+		</div>
+
+		<div class="divider">&nbsp;</div>
+
+		<h3 class="toggler">
+			Create Group
+		</h3>
+		<div class="element">
+			<div class="inner" style="padding: 10px 5px;">
+				<label style="display:inline;">No group yet?</label> Create one now!<br /><br />
+				<form method="get" action="createGroup">
+				  <center><input name="createGroup" type="Submit" value="Create" style="width: 100px" /></center>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+
+<%include file="footer.html" />

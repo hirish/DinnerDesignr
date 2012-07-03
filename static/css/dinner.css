@@ -1,0 +1,262 @@
+@font-face {
+  font-family:		'Oswald';
+  font-style:		normal;
+  font-weight:		normal;
+  src:				local('Oswald '), local('Oswald'), url('http://themes.googleusercontent.com/static/fonts/oswald/v5/qpy-UiLNKP-VfOdbcs6r6-vvDin1pK8aKteLpeZ5c0A.woff') format('woff');
+}
+
+@font-face {
+  font-family:		'Oswald';
+  font-style:		normal;
+  font-weight:		300;
+  src:				local('Oswald Light'), local('Oswald-Light'), url('http://themes.googleusercontent.com/static/fonts/oswald/v5/HqHm7BVC_nzzTui2lzQTDbO3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
+}
+
+body#main{
+	background:		black;
+	background-image:url('../dw.jpg');
+}
+
+* {
+	font-family:	Calibri, 'Helvetica Neue', Helvetica;
+	font-size:		14px;
+	font-weight:	normal;
+	text-shadow:	0px 1px 0px white;
+}
+
+.copyright{
+	position:		fixed;
+	bottom:			10px;
+	text-align:		center;
+	width:			100%;
+	left:			0;
+	color:			#eee;
+	text-shadow:	0px 1px 1px black;
+	font-size:		12px;
+	font-weight:	bold;
+}
+
+.bottom{
+	background:		black;
+	position:		fixed;
+	bottom:			0px;
+	width:			100%;
+	left:			0;
+	height:			35px;
+	opacity:		0.5;
+}
+
+.title{
+	color:			#eee;
+	font-family:	'Oswald';
+	font-weight:	400;
+	margin:			100px auto -60px auto;
+	padding-left:	210px;
+	width:			220px;
+	text-align:		right;
+	font-size:		32px;
+	text-shadow:	none;
+}
+
+#mbox-mainbox, #accordion{
+	border-radius:	5px;
+	border:			3px solid #eee;
+	padding:		10px;
+	box-shadow:		0px 2px 10px -3px black;
+
+	background:		-moz-linear-gradient(top, #eeeeee 0%, #dedede 100%);
+	background:		-webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#dedede));
+	background:		-webkit-linear-gradient(top, #eeeeee 0%,#dedede 100%);
+	background:		-o-linear-gradient(top, #eeeeee 0%,#dedede 100%);
+	background:		-ms-linear-gradient(top, #eeeeee 0%,#dedede 100%);
+	background:		linear-gradient(top, #eeeeee 0%,#dedede 100%);
+	filter:			progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#dedede',GradientType=0 );
+}
+
+#mbox-bottom{
+	display:		none;
+}
+
+#accordion{
+	width:			450px;
+	margin:			50px auto;
+}
+
+.toggler, h1{
+	font-weight:	bold;
+	color:			#111;
+	font-size:		16px;
+	font-weight:	400;
+	font-family:	'Oswald', Arial, sans-serif;	
+}
+
+.toggler { 
+	cursor:			pointer;
+	margin:			0;
+	padding:		5px;
+}
+
+a{
+	color: 			inherit;
+	text-shadow:	inherit;
+	font-size:		inherit;
+	font-family:	inherit;
+	font-weight:	inherit;
+}
+
+.inner {
+	display:		block;
+	padding:		5px 5px;
+	text-decoration:none;
+}
+
+.divider {
+	margin:			10px auto;
+	width:			100%;
+	height:			0px;
+	border-bottom:	1px solid #eee;
+	border-top:		1px solid #bbb;
+}
+
+img{
+/*	border-bottom:	1px solid #fff;*/
+	box-shadow:		0px 1px 1px -1px white;
+	cursor:			pointer;
+	border-radius:	5px;
+}
+
+.mainimage{
+	width:			100px;
+	float:			left;
+	border-radius:	8px;
+	margin:			0 5px;
+}
+
+.selector img{
+	width:			30px;
+	margin-right: 	10px;
+}
+
+table.mealedit img{
+	width:				30px;
+	height:				30px;
+	opacity:			0.5;
+	cursor:				pointer;
+	margin-top: 4px;
+	border-bottom:		none;
+}
+
+/*table.mealedit img:hover{
+	opacity: 			1.0;
+	border-bottom:		1px solid #eee;
+}*/
+
+table.mealedit img.selected{
+	opacity: 			1.0;
+	/*border-bottom:		1px solid #eee;*/
+}
+
+/*table.mealedit img.selected:hover{
+	opacity: 0.5;
+	border-bottom:		none;
+}*/
+
+table.mealdisplay{
+	width:			310px;
+}
+
+th{
+	text-align:		left;
+}
+
+table.mealdisplay th{
+	width: 50px;
+	font-weight:	normal;
+	padding:		5px 15px 5px 10px;
+}
+
+table.mealdisplay td{
+	font-weight:	bold;
+}
+
+table.mealedit th{
+	font-weight:	bold;
+	width:			80px;
+	padding: 0;
+}
+
+table.mealedit{
+	margin-bottom: 5px;
+}
+
+input, select{
+	outline:		none;
+}
+
+input[type="text"], input[type="password"]{
+	color:			#333;
+	font-size:		12px;
+	width:			185px;
+	border:			1px solid #aaa;
+	border-top:		1px solid #999;
+	border-bottom:	1px solid #ccc;
+	padding:		3px 3px;
+	border-radius:	5px;
+	box-shadow:		0px 1px 0px white;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+	color:			#111;
+	border:			1px solid #888;
+	border-top:		1px solid #666;
+	border-bottom:	1px solid #bbb;
+}
+
+select#guests{
+	margin-right: 20px;
+}
+
+label {
+	display:		inline-block;
+	padding:		0 0 15px 2px;
+	width:			80px;
+	font-weight:	bold;
+}
+
+.notification {
+	display: 		block;
+	float: 			right;
+	padding: 		2px 5px 3px;
+	margin: 		1px 0 0 5px;
+	box-shadow:		0px 1px 2px 0px #999;
+	border-radius:	3px;
+	color:			white;
+	text-shadow: 	none;
+	font-size:		12px;
+	font-weight:	normal;
+	background-color:#333;
+	border:			1px solid black;
+}
+
+.red {
+	background-color:#a30000;
+	border:			1px solid #8c0000;
+}
+
+.green {
+	background-color:#899E00;
+	border: 		1px solid #75850F;
+}
+
+.checkbox{
+	width: 24px;
+	height: 30px;
+	padding: 0 5px 0 0;
+	border-radius: 5px;
+	background: url(/static/faces/henry30.png) no-repeat;
+	display: block;
+	clear: left;
+	float: left;
+	cursor:				pointer;
+	margin-top: 4px;
+}

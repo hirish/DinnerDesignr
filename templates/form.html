@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="static/css/dinner.css" media="screen" />
+  <script src="static/js/moo-1.4.5.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+  <h1>Supper on ${dinner.getDay()}</h1>
+  <form action="submitUpdate" method="post">
+	<input type="hidden" name="dinner" value="${dinner.id}" />
+	<table class="mealedit">
+		<tr>
+		  <th>Cooking:</th>
+		  % for user in dinner.g.users:
+		  <td>
+			<input type="radio" name="cook" id="${user.name}" value="${user.id}" class="imageable"
+			% if user == dinner.cookUser:
+			checked
+			% endif
+			/>
+			<span class='tempLabel'>${user.name}</span>
+		  </td>
+		  % endfor
+		</tr>
+		<tr>
+		  <th>Available:</th>
+		  % for user in dinner.g.users:
+		  <td>
+			<input type="checkbox" name="attendee" id="${user.name}" style="background-image: url('/static/faces/${user.name}30.png')" value="${user.id}" class="imageable" 
+			% if user in dinner.attendees:
+			checked
+			% endif
+			/><span class='tempLabel'>${user.name}</span>
+		  </td>
+		  % endfor
+		</tr>
+	</table>
+	<div>
+	  <label>Food:</label><input type="Text" value="${dinner.menu}" name="menu" />
+	</div>
+	<div>
+		<label>Time:</label> Around&nbsp;
+		<select name="hour">
+		  % for i in range(4, 13):
+		  <option value="${i}"
+		  % if i == int(dinner.getHour()):
+		  	selected
+		  % endif
+		  >${i}</option>
+		  %endfor
+		</select>
+		:
+		<select name="minute">
+		  % for i in range(0, 61, 15):
+		  <%
+		  	if i == 0:
+			  i = '00'
+		  %>
+		  <option value="${i}"
+		  % if int(i) == int(dinner.getFuzzyMin()):
+		  	selected
+		  % endif
+		  >${i}</option>
+		  % endfor
+		</select>
+		pm
+	</div>
+	<div>
+		<label>Guests:</label>
+		<select id="guests" name="guests">
+		  <option value="0">-</option>
+		  % for i in range(1, 6):
+		  <option value="${i}"
+		  % if i == dinner.guests:
+		  	selected
+		  % endif
+		  >${i}</option>
+		  % endfor
+		</select>
+		<label style="width:85px;">Free-For-All:</label><input type="Checkbox" name="free" 
+		% if dinner.freeForAll:
+		  checked
+		% endif
+		/>
+	  </div>
+	  <div>
+		<center><input type="submit" value="Update" /></center>
+	</form>
+
+<script type="text/javascript" language="javascript">
+  checkboxes = document.getElementsByTagName("input"), images = Array();
+  for (i = 0; i < checkboxes.length; i++){
+	if ((checkboxes[i].type == "radio" || checkboxes[i].type == "checkbox") && checkboxes[i].hasClass('imageable')){
+	  images[i] = new Element('img', {'src': 'static/faces/' + checkboxes[i].id + '.jpg'});
+	  checkboxes[i].parentNode.insertBefore(images[i], checkboxes[i]);
+	  checkboxes[i].setStyle('display', 'none');
+	  images[i].onmouseup = checkboxToggle;
+	  if (checkboxes[i].checked) {
+		images[i].addClass('selected');
+	  }
+	}
+  }
+$$('.tempLabel').setStyle('display', 'none');
+function checkboxToggle(){
+  element = this.nextSibling;
+  checked = element.checked;
+
+  if (element.type == 'radio') {
+	if (checked){
+	  return
+	}
+	for (i = 0; i < checkboxes.length; i++){
+	  if (checkboxes[i].type == 'radio'){
+		checkboxes[i].checked = false;
+		images[i].removeClass('selected');
+	  }
+	} 
+  }
+
+  if (checked){
+	element.checked = false;
+	this.removeClass('selected');
+  }
+  else{
+	element.checked = true;
+	this.addClass('selected');
+  }
+}
+    // Update images
+  	// On image click, flip it and update checkbox
+</script>
+
+</body>
+
+</html>
