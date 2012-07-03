@@ -190,7 +190,6 @@ def updateDinner():
 	        if (top.frames.length>0)
 					setTimeout("top.location = '%s%s';",100);
 			</script>""" % ('http://localhost:5000', url_for('menu'))
-	return redirect(url_for('menu'))
 
 ####### Group Management ########
 
