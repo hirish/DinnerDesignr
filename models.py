@@ -41,6 +41,9 @@ class User(Base):
 		except IndexError:
 			return None
 
+	def gravatar(self):
+		return hashlib.md5(self.email.strip().lower()).hexdigest()
+
 
 class Group(Base):
 	__tablename__ = 'groups'

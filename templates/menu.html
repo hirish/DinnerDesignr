@@ -18,7 +18,8 @@
 		</h3>
 		<div class="element">
 		  <a data-milkbox="single" href="update.html?id=${dinner.id}" data-milkbox-size="width:315,height:275" class="inner">
-			<img src="static/faces/${dinner.cookUser.name}.jpg" alt="${dinner.cookUser.name}" class="mainimage" width="100" height="100" />
+			<!--<img src="static/faces/${dinner.cookUser.name}.jpg" alt="${dinner.cookUser.name}" class="mainimage" width="100" height="100" />-->
+			<img src="http://www.gravatar.com/avatar/${dinner.cookUser.gravatar()}?s=100" alt="${dinner.cookUser.name}" class="mainimage" width="100" height="100" />
 				<table class="mealdisplay">
 					<tr>
 						<th>Cooking...</th>
