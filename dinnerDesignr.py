@@ -105,7 +105,7 @@ def menu():
 		toCreate = 7 - len(dinners)
 		n = datetime.datetime.now().replace(hour = 7, minute = 0)
 		for i in range(toCreate):
-			t = n + datetime.timedelta(days = 7 - i)
+			t = n + datetime.timedelta(days = 6 - i)
 			newDinner = Dinner(menu = "Something Delicious", time = t, cookUser = user, g = user.g)
 			s.add(newDinner)
 		s.commit()
