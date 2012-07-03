@@ -41,8 +41,10 @@ class Group(Base):
 
 	id = Column(Integer, primary_key=True)
 	code = Column(String)
+	owner = Column(Integer)
 	users = relationship("User", backref="g")
 	dinners = relationship("Dinner", backref="g")
+	ownerUser = relationship("User", backref="owned")
 
 	def __repr__(self):
 		return "<Group %i : %s>" % (self.id, str(self.users))

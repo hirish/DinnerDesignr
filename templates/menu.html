@@ -40,11 +40,19 @@
 			</a>
 		</div>
 
-		% if not i == len(dinners) - 1:
+		% if code or not i == len(dinners) - 1:
 		<div class="divider">&nbsp;</div>
 		% endif
 
 		% endfor
+
+		<h3 class="toggler">
+		  Group Administration
+		  <span class="notification green">Code: ${code[:10]}...</span>
+		</h3>
+		<div class="element">
+		  Bob
+		</div>
 
 	</div>
 

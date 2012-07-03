@@ -96,6 +96,8 @@ def menu():
 	
 	dinners = user.g.dinners[:10]
 	print dinners
+	if user.owned == user.g:
+		return render_template('menu.html', dinners = dinners, code = user.owned.code, owner = True);
 
 	return render_template('menu.html', dinners = dinners)
 
