@@ -111,8 +111,8 @@ def menu():
 		s.commit()
 		dinners = user.g.getDinners()[:7]
 
-	if user.owned == user.g:
-		return render_template('menu.html', dinners = dinners, code = user.owned.code, owner = True);
+	if user.getOwned() == user.g:
+		return render_template('menu.html', dinners = dinners, code = user.getOwned().code, owner = True);
 
 	return render_template('menu.html', dinners = dinners)
 

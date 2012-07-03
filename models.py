@@ -35,16 +35,22 @@ class User(Base):
 	def hashPassword(self, password):
 		return hashlib.sha256(password + self.name + "sausage" ).hexdigest()
 
+	def getOwned(self):
+		try:
+			return self.owned[0]
+		except IndexError:
+			return None
+
 
 class Group(Base):
 	__tablename__ = 'groups'
 
 	id = Column(Integer, primary_key=True)
 	code = Column(String)
-	owner = Column(Integer)
-	users = relationship("User", backref="g")
+	owner = Column(Integer, ForeignKey('users.id'))
+	users = relationship("User", backref="g", primaryjoin = "users.c.group == groups.c.id")
 	dinners = relationship("Dinner", backref="g")
-	ownerUser = relationship("User", backref="owned")
+	ownerUser = relationship("User", backref="owned", primaryjoin = "users.c.id == groups.c.owner")
 
 	def __repr__(self):
 		return "<Group %i : %s>" % (self.id, str(self.users))
