@@ -41,6 +41,17 @@ def index():
 
 	return render_template('login.html', registrationError = registrationError, loginError = loginError)
 
+def getUser(userId):
+	return s.query(User).filter(User.id == userId)[0]
+
+def isLoggedIn():
+	try:
+		return s.query(User).filter(User.email == session['email'])[0]
+	except KeyError:
+		return None
+
+##### User Management #####
+
 def register(name, email, password):
 	print "Registration event detected"
 	newUser = User(name, email, password)
@@ -70,16 +81,12 @@ def login(email, password):
 		return redirect(url_for('groups'))
 	return redirect(url_for('menu'))
 
-def isLoggedIn():
-	try:
-		return s.query(User).filter(User.email == session['email'])[0]
-	except KeyError:
-		return None
-
 @app.route('/logout')
 def logout():
 	session.pop('email', None)
 	return redirect('/')
+
+###### Menu Management ######
 
 @app.route('/menu')
 def menu():
@@ -168,8 +175,7 @@ def updateDinner():
 			</script>""" % ('http://localhost:5000', url_for('menu'))
 	return redirect(url_for('menu'))
 
-def getUser(userId):
-	return s.query(User).filter(User.id == userId)[0]
+####### Group Management ########
 
 @app.route('/groups')
 def groups():
