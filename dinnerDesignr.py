@@ -1,10 +1,10 @@
 from flask import Flask, g, url_for, redirect, request, session
 from random import choice
 import string
-from flaskext.mako import init_mako, render_template
+from flask.ext.mako import init_mako, render_template
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from views import *
+#from views import *
 from models import *
 
 app = Flask(__name__)
